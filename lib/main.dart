@@ -1,85 +1,243 @@
+// import 'dart:async';
+// import 'package:flutter/material.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:geolocator/geolocator.dart';
+// import 'package:permission_handler/permission_handler.dart';
+
+// void main() => runApp(LocationTrackingApp());
+
+// class LocationTrackingApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       debugShowCheckedModeBanner: false,
+//       home: LiveLocationScreen(),
+//     );
+//   }
+// }
+
+// class LiveLocationScreen extends StatefulWidget {
+//   @override
+//   _LiveLocationScreenState createState() => _LiveLocationScreenState();
+// }
+
+// class _LiveLocationScreenState extends State<LiveLocationScreen> {
+//   Completer<GoogleMapController> _controller = Completer();
+//   LatLng _currentPosition = LatLng(37.7749, -122.4194); // Default position (San Francisco)
+//   StreamSubscription<Position>? _positionStream;
+//   bool _isTracking = false;
+
+//   @override
+//   void initState() {
+//     super.initState();
+//     _checkPermissionAndStartTracking();
+//   }
+
+//   Future<void> _checkPermissionAndStartTracking() async {
+//     var status = await Permission.location.request();
+
+//     if (status.isGranted) {
+//       _startLocationTracking();
+//     } else {
+//       print("Location permission denied");
+//     }
+//   }
+
+// // void _startLocationTracking() async {
+// //   LocationSettings locationSettings = LocationSettings(
+// //     accuracy: LocationAccuracy.high,
+// //     distanceFilter: 4 // Minimum distance in meters to receive updates
+// //   );
+
+// //   // Listen to the location updates
+// //   _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
+// //       .listen((Position newPosition) {
+// //     print("Received new position: $newPosition"); // Debug line
+// //     if (newPosition != null) {
+// //       setState(() {
+// //         _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
+// //       });
+// //       _updateMapLocation(_currentPosition);
+// //     }
+// //   }, onError: (error) {
+// //     print("Error in location stream: $error"); // Log any errors
+// //   });
+// // }
+
+// void _startLocationTracking() async {
+//   LocationSettings locationSettings = LocationSettings(
+//     accuracy: LocationAccuracy.high,
+//     distanceFilter: 3,
+//   );
+
+//   _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
+//       .listen((Position newPosition) {
+//     if (newPosition != null) {
+//       setState(() {
+//         _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
+//         _updateMapLocation(_currentPosition); // Ensure map is updated
+//       });
+//     }
+//   });
+// }
+
+
+
+// Future<void> _updateMapLocation(LatLng position) async {
+//   final GoogleMapController controller = await _controller.future;
+//   controller.animateCamera(CameraUpdate.newLatLng(position)); // Animate camera to new position
+// }
+
+
+
+//   @override
+//   void dispose() {
+//     _positionStream?.cancel();
+//     super.dispose();
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text('Live Location Tracking'),
+//       ),
+//       body: GoogleMap(
+//         initialCameraPosition: CameraPosition(
+//           target: _currentPosition,
+//           zoom: 15.0,
+//         ),
+//         onMapCreated: (GoogleMapController controller) {
+//           _controller.complete(controller);
+//         },
+//         myLocationEnabled: true,
+//         myLocationButtonEnabled: true,
+//         markers: {
+//           Marker(
+//             markerId: MarkerId('currentLocation'),
+//             position: _currentPosition,
+//             infoWindow: InfoWindow(title: 'You are here'),
+//           )
+//         },
+//       ),
+//     );
+//   }
+// }
+
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:permission_handler/permission_handler.dart';
 
-void main() => runApp(LocationApp());
+void main() => runApp(LocationTrackingApp());
 
-class LocationApp extends StatefulWidget {
+class LocationTrackingApp extends StatelessWidget {
   @override
-  _LocationAppState createState() => _LocationAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: LiveLocationScreen(),
+    );
+  }
 }
 
-class _LocationAppState extends State<LocationApp> {
-  Position? _currentPosition;
-  String _locationMessage = 'Getting location...';
+class LiveLocationScreen extends StatefulWidget {
+  @override
+  _LiveLocationScreenState createState() => _LiveLocationScreenState();
+}
+
+class _LiveLocationScreenState extends State<LiveLocationScreen> {
+  Completer<GoogleMapController> _controller = Completer();
+  LatLng _currentPosition = LatLng(37.7749, -122.4194); // Default position
+  StreamSubscription<Position>? _positionStream;
+  List<LatLng> _pathCoordinates = []; // To store the path points
+  Polyline _polyline = Polyline(polylineId: PolylineId('path'), points: []);
 
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    _checkPermissionAndStartTracking();
   }
 
-  // Method to get the current location
-  void _getCurrentLocation() async {
-    bool serviceEnabled;
-    LocationPermission permission;
+  Future<void> _checkPermissionAndStartTracking() async {
+    var status = await Permission.location.request();
 
-    // Check if location services are enabled
-    serviceEnabled = await Geolocator.isLocationServiceEnabled();
-    if (!serviceEnabled) {
+    if (status.isGranted) {
+      _startLocationTracking();
+    } else {
+      print("Location permission denied");
+    }
+  }
+
+void _startLocationTracking() async {
+  LocationSettings locationSettings = LocationSettings(
+    accuracy: LocationAccuracy.bestForNavigation, // Highest accuracy for real-time tracking
+    distanceFilter: 0, // Update as often as possible (with no movement threshold)
+  );
+
+  _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
+      .listen((Position newPosition) {
+    if (newPosition != null) {
       setState(() {
-        _locationMessage = "Location services are disabled.";
+        _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
+        _pathCoordinates.add(_currentPosition); // Add to path
+        _updateMapLocation(_currentPosition);
+        _updatePath();
       });
-      return;
     }
+  }, onError: (error) {
+    print("Error in location stream: $error");
+  });
+}
 
-    // Check and request location permissions
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        setState(() {
-          _locationMessage = "Location permissions are denied.";
-        });
-        return;
-      }
-    }
 
-    if (permission == LocationPermission.deniedForever) {
-      setState(() {
-        _locationMessage = "Location permissions are permanently denied.";
-      });
-      return;
-    }
+  Future<void> _updateMapLocation(LatLng position) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newLatLng(position)); // Move the camera to new position
+  }
 
-    // Get current position
-    Geolocator.getPositionStream().listen(
-      (Position position) {
-        setState(() {
-          _currentPosition = position;
-          _locationMessage =
-              'Latitude: ${position.latitude}, Longitude: ${position.longitude}';
-        });
-      },
-      onError: (e) {
-        setState(() {
-          _locationMessage = 'Error: ${e.toString()}';
-        });
-      },
-    );
+  void _updatePath() {
+    setState(() {
+      _polyline = Polyline(
+        polylineId: PolylineId('path'),
+        points: _pathCoordinates, // Draw the path
+        color: Colors.red,
+        width: 5,
+      );
+    });
+  }
+
+  @override
+  void dispose() {
+    _positionStream?.cancel();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Location Tracker'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Live Location Tracking with Path'),
+      ),
+      body: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: _currentPosition,
+          zoom: 15.0,
         ),
-        body: Center(
-          child: _currentPosition == null
-              ? Text(_locationMessage) // Show message if location is not available
-              : Text(_locationMessage), // Show updated location data
-        ),
+        onMapCreated: (GoogleMapController controller) {
+          _controller.complete(controller);
+        },
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+        markers: {
+          Marker(
+            markerId: MarkerId('currentLocation'),
+            position: _currentPosition,
+            infoWindow: InfoWindow(title: 'You are here'),
+          ),
+        },
+        polylines: {_polyline}, // Show the path as a polyline
       ),
     );
   }

@@ -38,6 +38,8 @@ dependencies:
   firebase_messaging: any
   firebase_database: ^11.1.4
   flutter_callkit_incoming: ^2.0.4+2
+  google_maps_flutter: ^2.9.0
+  permission_handler: ^11.3.1
 
 
   # The following adds the Cupertino Icons font to your application.
