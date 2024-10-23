@@ -8,6 +8,12 @@
       "languageVersion": "3.2"
     },
     {
+      "name": "args",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/args-2.6.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
       "name": "async",
       "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/async-2.11.0",
       "packageUri": "lib/",
@@ -39,7 +45,7 @@
     },
     {
       "name": "crypto",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/crypto-3.0.5",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/crypto-3.0.6",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
@@ -56,10 +62,22 @@
       "languageVersion": "3.1"
     },
     {
+      "name": "dbus",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/dbus-0.7.10",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "fake_async",
       "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/fake_async-1.3.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "ffi",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/ffi-2.1.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
     },
     {
       "name": "firebase_core",
@@ -117,9 +135,9 @@
     },
     {
       "name": "fixnum",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/fixnum-1.1.0",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/fixnum-1.1.1",
       "packageUri": "lib/",
-      "languageVersion": "2.19"
+      "languageVersion": "3.1"
     },
     {
       "name": "flutter",
@@ -128,22 +146,34 @@
       "languageVersion": "3.3"
     },
     {
-      "name": "flutter_callkit_incoming",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_callkit_incoming-2.0.4+2",
-      "packageUri": "lib/",
-      "languageVersion": "2.18"
-    },
-    {
       "name": "flutter_lints",
       "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_lints-5.0.0",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
-      "name": "flutter_plugin_android_lifecycle",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.22",
+      "name": "flutter_local_notifications",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_local_notifications-17.2.3",
       "packageUri": "lib/",
-      "languageVersion": "3.4"
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications_linux",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_local_notifications_linux-4.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_local_notifications_platform_interface",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_local_notifications_platform_interface-7.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "flutter_plugin_android_lifecycle",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/flutter_plugin_android_lifecycle-2.0.23",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "flutter_test",
@@ -207,13 +237,13 @@
     },
     {
       "name": "google_maps_flutter_android",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.8",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/google_maps_flutter_android-2.14.10",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
     {
       "name": "google_maps_flutter_ios",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.13.0",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/google_maps_flutter_ios-2.13.1",
       "packageUri": "lib/",
       "languageVersion": "3.3"
     },
@@ -260,12 +290,6 @@
       "languageVersion": "2.19"
     },
     {
-      "name": "json_annotation",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/json_annotation-4.9.0",
-      "packageUri": "lib/",
-      "languageVersion": "3.0"
-    },
-    {
       "name": "leak_tracker",
       "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/leak_tracker-10.0.5",
       "packageUri": "lib/",
@@ -297,7 +321,7 @@
     },
     {
       "name": "local_auth_android",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/local_auth_android-1.0.45",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/local_auth_android-1.0.46",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     },
@@ -321,21 +345,21 @@
     },
     {
       "name": "location",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location-6.0.2",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location-7.0.1",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.4"
     },
     {
       "name": "location_platform_interface",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location_platform_interface-4.0.0",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location_platform_interface-5.0.0",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.4"
     },
     {
       "name": "location_web",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location_web-5.0.1",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/location_web-5.0.4",
       "packageUri": "lib/",
-      "languageVersion": "3.1"
+      "languageVersion": "3.4"
     },
     {
       "name": "matcher",
@@ -369,7 +393,7 @@
     },
     {
       "name": "permission_handler_android",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.12",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/permission_handler_android-12.0.13",
       "packageUri": "lib/",
       "languageVersion": "2.15"
     },
@@ -396,6 +420,12 @@
       "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/permission_handler_windows-0.2.1",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "petitparser",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/petitparser-6.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
     },
     {
       "name": "plugin_platform_interface",
@@ -464,10 +494,16 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "typed_data",
-      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
+      "name": "timezone",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/timezone-0.9.4",
       "packageUri": "lib/",
-      "languageVersion": "2.17"
+      "languageVersion": "2.19"
+    },
+    {
+      "name": "typed_data",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/typed_data-1.4.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.5"
     },
     {
       "name": "uuid",
@@ -494,13 +530,25 @@
       "languageVersion": "3.4"
     },
     {
+      "name": "xdg_directories",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/xdg_directories-1.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.3"
+    },
+    {
+      "name": "xml",
+      "rootUri": "file:///Users/alvinmathew/.pub-cache/hosted/pub.dev/xml-6.5.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.2"
+    },
+    {
       "name": "location_verification",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-23T21:05:04.092465Z",
+  "generated": "2024-10-23T21:06:57.413155Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/alvinmathew/flutter",
