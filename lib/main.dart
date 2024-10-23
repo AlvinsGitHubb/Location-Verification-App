@@ -132,6 +132,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void main() => runApp(LocationTrackingApp());
 
@@ -156,79 +157,88 @@ class LiveLocationScreen extends StatefulWidget {
 
 class _LiveLocationScreenState extends State<LiveLocationScreen> {
   final Completer<GoogleMapController> _controller = Completer();
-  LatLng _currentPosition = LatLng(37.7749, -122.4194); // Default position
-  LatLng? _destination; // Destination selected by user
-  StreamSubscription<Position>? _positionStream;
-  final List<LatLng> _pathCoordinates = []; // To store the path points
-  Polyline _polyline = Polyline(polylineId: PolylineId('path'), points: []);
-  bool _isSimulating = false; // Variable to track simulation mode
-  List<LatLng> _routePoints = []; // Route points from Google Directions API
-  int _routeIndex = 0; // Index to move along the route
+  LatLng _currentPosition = LatLng(37.7749, -122.4194); // Default position (San Francisco)
+  LatLng? _destination;
+  final Polyline _polyline = Polyline(polylineId: PolylineId('path'), points: []);
+  List<LatLng> _routePoints = [];
+  int _routeIndex = 0;
   Timer? _simulationTimer;
+  bool _isSimulating = false;
+  final _addressController = TextEditingController();
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
-  final String _googleApiKey = "AIzaSyD8SKqoDKMzVOfDL2G0AoYW6VDJX0BbBME"; // Add your Google Maps API Key
+  final String _googleApiKey = "AIzaSyD8SKqoDKMzVOfDL2G0AoYW6VDJX0BbBME"; // Replace with your API key
 
   @override
   void initState() {
     super.initState();
     _checkPermissionAndStartTracking();
+    _initializeNotificationPlugin();
   }
 
   @override
   void dispose() {
-    _positionStream?.cancel();
     _simulationTimer?.cancel();
     super.dispose();
   }
 
-  /// Check permissions and start tracking the location
+  /// Initialize notification plugin
+  void _initializeNotificationPlugin() {
+    final android = AndroidInitializationSettings('@mipmap/ic_launcher');
+    final iOS = DarwinInitializationSettings();
+    final settings = InitializationSettings(android: android, iOS: iOS);
+    _flutterLocalNotificationsPlugin.initialize(settings);
+  }
+
+  /// Show notification when arrived at destination
+  Future<void> _showArrivalNotification() async {
+    const androidDetails = AndroidNotificationDetails('channel_id', 'channel_name', importance: Importance.max);
+    const notificationDetails = NotificationDetails(android: androidDetails);
+    await _flutterLocalNotificationsPlugin.show(0, 'Arrival', 'You have arrived at your destination', notificationDetails);
+  }
+
+  /// Check permissions and start getting current location
   Future<void> _checkPermissionAndStartTracking() async {
     var status = await Permission.location.request();
-
     if (status.isGranted) {
-      _startLocationTracking();
+      _getCurrentLocation();
     } else {
-      if (kDebugMode) {
-        print("Location permission denied");
-      }
+      if (kDebugMode) print("Location permission denied");
     }
   }
 
-  /// Start real-time location tracking with high accuracy
-  void _startLocationTracking() async {
-    LocationSettings locationSettings = LocationSettings(
-      accuracy: LocationAccuracy.bestForNavigation, // Highest accuracy
-      distanceFilter: 0, // No filtering, get every update
+  /// Get current location
+  Future<void> _getCurrentLocation() async {
+   Position position = await Geolocator.getCurrentPosition(
+    locationSettings: LocationSettings(
+      accuracy: LocationAccuracy.high,
+      ),
     );
-
-    _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
-        .listen((Position newPosition) {
-      if (!_isSimulating) {
-        setState(() {
-          _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
-          _pathCoordinates.add(_currentPosition); // Add to the path
-          _updateMapLocation(_currentPosition);
-          _updatePath();
-        });
-      }
+    setState(() {
+      _currentPosition = LatLng(position.latitude, position.longitude);
     });
+    _updateMapLocation(_currentPosition);
   }
 
-  /// Get directions from current location to a destination using Google Directions API
+  /// Update the map camera to follow the current position
+  Future<void> _updateMapLocation(LatLng position) async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newLatLng(position));
+  }
+
+  /// Get route points from current location to destination
   Future<void> _getRoutePoints(LatLng origin, LatLng destination) async {
     String url =
         "https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}&key=$_googleApiKey";
 
     final response = await http.get(Uri.parse(url));
-
     if (response.statusCode == 200) {
       final data = json.decode(response.body);
       final points = data['routes'][0]['overview_polyline']['points'];
-      _routePoints = _decodePolyline(points); // Decode polyline to get route points
+      _routePoints = _decodePolyline(points);
+      _startDrivingSimulation(); // Start simulation after fetching route
     } else {
-      if (kDebugMode) {
-        print("Failed to get directions");
-      }
+      if (kDebugMode) print("Failed to get directions");
     }
   }
 
@@ -264,115 +274,124 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
     return polyline;
   }
 
-  /// Simulate movement along the route
+  /// Simulate driving along the route
   void _startDrivingSimulation() {
-    if (_routePoints.isNotEmpty) {
-      _simulationTimer = Timer.periodic(Duration(milliseconds: 500), (timer) {
-        if (_routeIndex < _routePoints.length) {
-          setState(() {
-            _currentPosition = _routePoints[_routeIndex];
-            _pathCoordinates.add(_currentPosition); // Add to path dynamically
-            _updateMapLocation(_currentPosition); // Update map position
-            _updatePath(); // Draw the path on the map
-          });
+    _simulationTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+      if (_routeIndex < _routePoints.length) {
+        setState(() {
+          _currentPosition = _routePoints[_routeIndex];
+          _updateMapLocation(_currentPosition);
           _routeIndex++;
-        } else {
-          _simulationTimer?.cancel(); // Stop when the route is completed
-        }
-      });
-    } else {
-      if (kDebugMode) {
-        print("No route points available for simulation");
+          if (_routeIndex == _routePoints.length) {
+            _showArrivalNotification(); // Show arrival notification
+            _simulationTimer?.cancel();
+            setState(() {
+              _isSimulating = false; // End simulation
+            });
+          }
+        });
       }
-    }
-  }
-
-  /// Update the map camera to follow the current position
-  Future<void> _updateMapLocation(LatLng position) async {
-    final GoogleMapController controller = await _controller.future;
-    controller.animateCamera(CameraUpdate.newLatLng(position)); // Move the camera to the new position
-  }
-
-  /// Draw the path on the map as a polyline
-  void _updatePath() {
-    setState(() {
-      _polyline = Polyline(
-        polylineId: PolylineId('path'),
-        points: _pathCoordinates, // Draw the path
-        color: Colors.red,
-        width: 5,
-      );
     });
   }
 
-  /// Toggle between real-time tracking and simulation
-  void _toggleSimulation() async {
-    if (_isSimulating) {
-      _simulationTimer?.cancel(); // Stop simulation
-      _isSimulating = false;
-      _checkPermissionAndStartTracking(); // Resume real-time tracking
-    } else if (_destination != null) {
-      _positionStream?.cancel(); // Stop real-time tracking
-      _isSimulating = true;
+  /// Search for an address and set it as the destination
+  Future<void> _searchAddress(String address) async {
+    String url = "https://maps.googleapis.com/maps/api/geocode/json?address=$address&key=$_googleApiKey";
+    final response = await http.get(Uri.parse(url));
 
-      // Get directions from current position to the selected destination
-      await _getRoutePoints(_currentPosition, _destination!); // Get route points from Google Directions API
-      _startDrivingSimulation(); // Start simulation after fetching route
-    } else {
-      if (kDebugMode) {
-        print("No destination set");
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      if (data['results'].isNotEmpty) {
+        LatLng destination = LatLng(
+          data['results'][0]['geometry']['location']['lat'],
+          data['results'][0]['geometry']['location']['lng'],
+        );
+        setState(() {
+          _destination = destination;
+        });
+        await _getRoutePoints(_currentPosition, _destination!);
+        setState(() {
+          _isSimulating = true; // Start simulation
+        });
       }
+    } else {
+      if (kDebugMode) print("Failed to search address");
     }
-  }
-
-  /// Handle map tap to set destination
-  void _onMapTapped(LatLng tappedPoint) {
-    setState(() {
-      _destination = tappedPoint; // Set the destination to the tapped point
-    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_isSimulating ? 'Simulated Driving' : 'Real-Time Driving'), // Dynamic title
+        title: const Text('Driving Simulation'),
+        actions: [
+          if (_isSimulating)
+            IconButton(
+              icon: const Icon(Icons.stop),
+              onPressed: () {
+                _simulationTimer?.cancel();
+                setState(() {
+                  _isSimulating = false;
+                });
+              },
+            ),
+        ],
       ),
       body: Stack(
         children: [
           GoogleMap(
             initialCameraPosition: CameraPosition(
               target: _currentPosition,
-              zoom: 15.0,
+              zoom: 14.0,
             ),
+            myLocationEnabled: true, // Enable user location on the map
+            myLocationButtonEnabled: true,
             onMapCreated: (GoogleMapController controller) {
               _controller.complete(controller);
             },
-            myLocationEnabled: true,
-            myLocationButtonEnabled: true,
             markers: {
               Marker(
-                markerId: MarkerId('currentLocation'),
+                markerId: const MarkerId('currentLocation'),
                 position: _currentPosition,
-                infoWindow: InfoWindow(title: _isSimulating ? 'Simulated Position' : 'Real Position'),
+                infoWindow: const InfoWindow(title: 'You are here'),
               ),
-              if (_destination != null) // Display destination marker if set
+              if (_destination != null)
                 Marker(
-                  markerId: MarkerId('destination'),
+                  markerId: const MarkerId('destination'),
                   position: _destination!,
-                  infoWindow: InfoWindow(title: 'Destination'),
+                  infoWindow: const InfoWindow(title: 'Destination'),
                   icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
                 ),
             },
-            polylines: {_polyline}, // Show the path as a polyline
-            onTap: _onMapTapped, // Set destination on map tap
+            polylines: {_polyline}, // Show the path
           ),
           Positioned(
-            bottom: 20,
+            top: 20,
             right: 20,
-            child: FloatingActionButton(
-              onPressed: _toggleSimulation, // Toggle simulation on button press
-              child: Icon(_isSimulating ? Icons.stop : Icons.play_arrow),
+            left: 20,
+            child: Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    controller: _addressController,
+                    decoration: InputDecoration(
+                      hintText: "Enter destination address",
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 10),
+                FloatingActionButton(
+                  onPressed: () {
+                    if (_addressController.text.isNotEmpty) {
+                      _searchAddress(_addressController.text);
+                    }
+                  },
+                  child: const Icon(Icons.search),
+                ),
+              ],
             ),
           ),
         ],

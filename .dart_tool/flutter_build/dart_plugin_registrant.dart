@@ -12,6 +12,7 @@ import 'package:local_auth_android/local_auth_android.dart';
 import 'package:geolocator_apple/geolocator_apple.dart';
 import 'package:google_maps_flutter_ios/google_maps_flutter_ios.dart';
 import 'package:local_auth_darwin/local_auth_darwin.dart';
+import 'package:flutter_local_notifications_linux/flutter_local_notifications_linux.dart';
 import 'package:geolocator_apple/geolocator_apple.dart';
 import 'package:local_auth_darwin/local_auth_darwin.dart';
 import 'package:local_auth_windows/local_auth_windows.dart';
@@ -78,6 +79,15 @@ class _PluginRegistrant {
       }
 
     } else if (Platform.isLinux) {
+      try {
+        LinuxFlutterLocalNotificationsPlugin.registerWith();
+      } catch (err) {
+        print(
+          '`flutter_local_notifications_linux` threw an error: $err. '
+          'The app may not function as expected until you remove this plugin from pubspec.yaml'
+        );
+      }
+
     } else if (Platform.isMacOS) {
       try {
         GeolocatorApple.registerWith();

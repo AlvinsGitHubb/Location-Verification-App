@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.location_verification.app-mergeDebugResources-34:/values-da/values-da.xml",
+            "outputFile": "com.example.location_verification.app-mergeDebugResources-35:/values-da/values-da.xml",
             "map": [
                 {
                     "source": "/Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/res/values-da/values-da.xml",

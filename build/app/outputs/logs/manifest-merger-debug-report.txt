@@ -77,6 +77,7 @@ INJECTED from /Users/alvinmathew/Downloads/projects/locationverifywork/Location-
 MERGED from [:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-15:12
+MERGED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-10:12
 MERGED from [:google_maps_flutter_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/google_maps_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:local_auth_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/local_auth_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:flutter_plugin_android_lifecycle] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_plugin_android_lifecycle/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
@@ -84,6 +85,7 @@ MERGED from [:geolocator_android] /Users/alvinmathew/Downloads/projects/location
 MERGED from [:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-18:12
 MERGED from [:permission_handler_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/8d0ffbcb819738e929297b2f3f59896f/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.media:media:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/12e4e4a487996a5e584aa6887a8ecd8e/transformed/media-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:17:1-29:12
 MERGED from [androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.window:window-java:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c47823fb0be9a4bc50de62c8a4f1b2ed/transformed/jetified-window-java-1.2.0/AndroidManifest.xml:17:1-21:12
@@ -204,6 +206,8 @@ MERGED from [:firebase_messaging] /Users/alvinmathew/Downloads/projects/location
 MERGED from [:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/google_maps_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:google_maps_flutter_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/google_maps_flutter_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:local_auth_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/local_auth_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
@@ -218,6 +222,8 @@ MERGED from [:permission_handler_android] /Users/alvinmathew/Downloads/projects/
 MERGED from [:permission_handler_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/permission_handler_android/intermediates/merged_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/8d0ffbcb819738e929297b2f3f59896f/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-location:21.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/8d0ffbcb819738e929297b2f3f59896f/transformed/jetified-play-services-location-21.2.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/12e4e4a487996a5e584aa6887a8ecd8e/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/12e4e4a487996a5e584aa6887a8ecd8e/transformed/media-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:20:5-44
@@ -402,6 +408,8 @@ MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] /Users/al
 		ADDED from [:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:9:22-76
 uses-permission#android.permission.POST_NOTIFICATIONS
 ADDED from [:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/debug/AndroidManifest.xml:11:5-77
+MERGED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-77
+MERGED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:8:5-77
 MERGED from [com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:23:5-77
 MERGED from [com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:23:5-77
 	android:name
@@ -462,6 +470,10 @@ ADDED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverify
 		ADDED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/debug/AndroidManifest.xml:10:17-124
+uses-permission#android.permission.VIBRATE
+ADDED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-66
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/debug/AndroidManifest.xml:7:22-63
 uses-permission#android.permission.USE_BIOMETRIC
 ADDED from [:local_auth_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/local_auth_android/intermediates/merged_manifest/debug/AndroidManifest.xml:7:5-72
 MERGED from [androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:24:5-72

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.location_verification.app-mergeDebugResources-34:/values-fi/values-fi.xml",
+            "outputFile": "com.example.location_verification.app-mergeDebugResources-35:/values-fi/values-fi.xml",
             "map": [
                 {
                     "source": "/Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/res/values-fi/values-fi.xml",
