@@ -126,6 +126,7 @@
 
 import 'dart:async';
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -187,7 +188,9 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
     if (status.isGranted) {
       _startLocationTracking();
     } else {
-      print("Location permission denied");
+      if (kDebugMode) {
+        print("Location permission denied");
+      }
     }
   }
 
@@ -223,7 +226,9 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
       final points = data['routes'][0]['overview_polyline']['points'];
       _routePoints = _decodePolyline(points); // Decode polyline to get route points
     } else {
-      print("Failed to get directions");
+      if (kDebugMode) {
+        print("Failed to get directions");
+      }
     }
   }
 
@@ -276,7 +281,9 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
         }
       });
     } else {
-      print("No route points available for simulation");
+      if (kDebugMode) {
+        print("No route points available for simulation");
+      }
     }
   }
 
@@ -312,7 +319,9 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
       await _getRoutePoints(_currentPosition, _destination!); // Get route points from Google Directions API
       _startDrivingSimulation(); // Start simulation after fetching route
     } else {
-      print("No destination set");
+      if (kDebugMode) {
+        print("No destination set");
+      }
     }
   }
 
