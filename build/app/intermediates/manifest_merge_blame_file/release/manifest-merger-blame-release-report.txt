@@ -1,0 +1,473 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.location_verification"
+4    android:versionCode="1"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Required to query activities that can process text -->
+12    <queries>
+12-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:38:5-43:15
+13        <intent>
+13-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:39:9-42:18
+14            <action android:name="android.intent.action.PROCESS_TEXT" />
+14-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:40:13-72
+14-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:40:21-70
+15
+16            <data android:mimeType="text/plain" />
+16-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:41:13-50
+16-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:41:19-48
+17        </intent>
+18        <!-- Needs to be explicitly declared on Android R+ -->
+19        <package android:name="com.google.android.apps.maps" />
+19-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:9-64
+19-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:33:18-61
+20    </queries>
+21
+22    <uses-permission android:name="android.permission.INTERNET" />
+22-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-67
+22-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-64
+23    <uses-permission android:name="android.permission.WAKE_LOCK" />
+23-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-68
+23-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:8:22-65
+24    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- Permissions options for the `notification` group -->
+24-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:9:5-79
+24-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:9:22-76
+25    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+25-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:11:5-77
+25-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:11:22-74
+26    <uses-permission android:name="android.permission.VIBRATE" />
+26-->[:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-66
+26-->[:flutter_local_notifications] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/flutter_local_notifications/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-63
+27    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+27-->[:local_auth_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/local_auth_android/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-72
+27-->[:local_auth_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/local_auth_android/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-69
+28    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+28-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:7:5-81
+28-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:7:22-78
+29    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- suppress DeprecatedClassUsageInspection -->
+29-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:8:5-79
+29-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:8:22-76
+30    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+30-->[androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:27:5-74
+30-->[androidx.biometric:biometric:1.1.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c86ee1a41ebc996b059a912ce5891508/transformed/biometric-1.1.0/AndroidManifest.xml:27:22-71
+31
+32    <uses-feature
+32-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:26:5-28:35
+33        android:glEsVersion="0x00020000"
+33-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:27:9-41
+34        android:required="true" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+34-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:28:9-32
+35    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+35-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:26:5-82
+35-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:26:22-79
+36
+37    <permission
+37-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:22:5-24:47
+38        android:name="com.example.location_verification.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+38-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:23:9-81
+39        android:protectionLevel="signature" />
+39-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:24:9-44
+40
+41    <uses-permission android:name="com.example.location_verification.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+41-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:26:5-97
+41-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:26:22-94
+42
+43    <application
+44        android:name="android.app.Application"
+44-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:4:9-42
+45        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+45-->[androidx.core:core:1.13.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/6ea1a8b243146fe4c51caaeb39392ccb/transformed/core-1.13.1/AndroidManifest.xml:28:18-86
+46        android:extractNativeLibs="true"
+47        android:icon="@mipmap/ic_launcher"
+47-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:5:9-43
+48        android:label="location_verification" >
+48-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:3:9-46
+49        <activity
+49-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:7:9-23:20
+50            android:name="com.example.location_verification.MainActivity"
+50-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:8:13-41
+51            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+51-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:13:13-163
+52            android:exported="true"
+52-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:9:13-36
+53            android:hardwareAccelerated="true"
+53-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:14:13-47
+54            android:launchMode="singleTop"
+54-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:10:13-43
+55            android:taskAffinity=""
+55-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:11:13-36
+56            android:theme="@style/LaunchTheme"
+56-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:12:13-47
+57            android:windowSoftInputMode="adjustResize" >
+57-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:15:13-55
+58            <meta-data
+58-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:16:13-18:57
+59                android:name="io.flutter.embedding.android.NormalTheme"
+59-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:17:17-72
+60                android:resource="@style/NormalTheme" />
+60-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:18:17-54
+61
+62            <intent-filter>
+62-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:19:13-22:29
+63                <action android:name="android.intent.action.MAIN" />
+63-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:20:17-68
+63-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:20:25-66
+64
+65                <category android:name="android.intent.category.LAUNCHER" />
+65-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:21:17-76
+65-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:21:27-74
+66            </intent-filter>
+67        </activity>
+68
+69        <!-- Flutter embedding version -->
+70        <meta-data
+70-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:26:9-28:33
+71            android:name="flutterEmbedding"
+71-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:27:13-44
+72            android:value="2" />
+72-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:28:13-30
+73
+74        <!-- Google Maps API Key -->
+75        <meta-data
+75-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:31:9-33:71
+76            android:name="com.google.android.geo.API_KEY"
+76-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:32:13-58
+77            android:value="AIzaSyD8SKqoDKMzVOfDL2G0AoYW6VDJX0BbBME" />
+77-->/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/android/app/src/main/AndroidManifest.xml:33:13-68
+78
+79        <service
+79-->[:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-12:19
+80            android:name="com.google.firebase.components.ComponentDiscoveryService"
+80-->[:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:8:18-89
+81            android:directBootAware="true"
+81-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:32:13-43
+82            android:exported="false" >
+82-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:56:13-37
+83            <meta-data
+83-->[:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-11:85
+84                android:name="com.google.firebase.components:io.flutter.plugins.firebase.database.FlutterFirebaseAppRegistrar"
+84-->[:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:10:17-127
+85                android:value="com.google.firebase.components.ComponentRegistrar" />
+85-->[:firebase_database] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_database/intermediates/merged_manifest/release/AndroidManifest.xml:11:17-82
+86            <meta-data
+86-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:36:13-38:85
+87                android:name="com.google.firebase.components:io.flutter.plugins.firebase.messaging.FlutterFirebaseAppRegistrar"
+87-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:37:17-128
+88                android:value="com.google.firebase.components.ComponentRegistrar" />
+88-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:38:17-82
+89            <meta-data
+89-->[:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-11:85
+90                android:name="com.google.firebase.components:io.flutter.plugins.firebase.core.FlutterFirebaseCoreRegistrar"
+90-->[:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:10:17-124
+91                android:value="com.google.firebase.components.ComponentRegistrar" />
+91-->[:firebase_core] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_core/intermediates/merged_manifest/release/AndroidManifest.xml:11:17-82
+92            <meta-data
+92-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:57:13-59:85
+93                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+93-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:58:17-122
+94                android:value="com.google.firebase.components.ComponentRegistrar" />
+94-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:59:17-82
+95            <meta-data
+95-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:60:13-62:85
+96                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+96-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:61:17-119
+97                android:value="com.google.firebase.components.ComponentRegistrar" />
+97-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:62:17-82
+98            <meta-data
+98-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:29:13-31:85
+99                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+99-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:30:17-120
+100                android:value="com.google.firebase.components.ComponentRegistrar" />
+100-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:31:17-82
+101            <meta-data
+101-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:32:13-34:85
+102                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+102-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:33:17-109
+103                android:value="com.google.firebase.components.ComponentRegistrar" />
+103-->[com.google.firebase:firebase-database:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/30e07fb9a2c885327310326439417570/transformed/jetified-firebase-database-21.0.0/AndroidManifest.xml:34:17-82
+104            <meta-data
+104-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:15:13-17:85
+105                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+105-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:16:17-130
+106                android:value="com.google.firebase.components.ComponentRegistrar" />
+106-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:17:17-82
+107            <meta-data
+107-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:18:13-20:85
+108                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+108-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:19:17-127
+109                android:value="com.google.firebase.components.ComponentRegistrar" />
+109-->[com.google.firebase:firebase-installations:18.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/861d8c149dbaa03276ab305a76a88878/transformed/jetified-firebase-installations-18.0.0/AndroidManifest.xml:20:17-82
+110            <meta-data
+110-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/da706e21eb84a00d0f56a58830625e83/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:12:13-14:85
+111                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+111-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/da706e21eb84a00d0f56a58830625e83/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:13:17-116
+112                android:value="com.google.firebase.components.ComponentRegistrar" />
+112-->[com.google.firebase:firebase-common-ktx:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/da706e21eb84a00d0f56a58830625e83/transformed/jetified-firebase-common-ktx-21.0.0/AndroidManifest.xml:14:17-82
+113            <meta-data
+113-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:35:13-37:85
+114                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+114-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:36:17-109
+115                android:value="com.google.firebase.components.ComponentRegistrar" />
+115-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:37:17-82
+116            <meta-data
+116-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/1610fbd45dcf934b64637e5a0938df44/transformed/jetified-firebase-datatransport-18.2.0/AndroidManifest.xml:25:13-27:85
+117                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+117-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/1610fbd45dcf934b64637e5a0938df44/transformed/jetified-firebase-datatransport-18.2.0/AndroidManifest.xml:26:17-115
+118                android:value="com.google.firebase.components.ComponentRegistrar" />
+118-->[com.google.firebase:firebase-datatransport:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/1610fbd45dcf934b64637e5a0938df44/transformed/jetified-firebase-datatransport-18.2.0/AndroidManifest.xml:27:17-82
+119        </service>
+120        <service
+120-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:14:9-17:72
+121            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingBackgroundService"
+121-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-107
+122            android:exported="false"
+122-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:16:13-37
+123            android:permission="android.permission.BIND_JOB_SERVICE" />
+123-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:17:13-69
+124        <service
+124-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:18:9-24:19
+125            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingService"
+125-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:19:13-97
+126            android:exported="false" >
+126-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:20:13-37
+127            <intent-filter>
+127-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:21:13-23:29
+128                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+128-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-78
+128-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-75
+129            </intent-filter>
+130        </service>
+131
+132        <receiver
+132-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:26:9-33:20
+133            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingReceiver"
+133-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:27:13-98
+134            android:exported="true"
+134-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:28:13-36
+135            android:permission="com.google.android.c2dm.permission.SEND" >
+135-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:29:13-73
+136            <intent-filter>
+136-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:29
+137                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+137-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-81
+137-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:31:25-78
+138            </intent-filter>
+139        </receiver>
+140
+141        <provider
+141-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:41:9-45:38
+142            android:name="io.flutter.plugins.firebase.messaging.FlutterFirebaseMessagingInitProvider"
+142-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:42:13-102
+143            android:authorities="com.example.location_verification.flutterfirebasemessaginginitprovider"
+143-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:43:13-88
+144            android:exported="false"
+144-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:44:13-37
+145            android:initOrder="99" />
+145-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:45:13-35
+146
+147        <service
+147-->[:geolocator_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:8:9-12:56
+148            android:name="com.baseflow.geolocator.GeolocatorLocationService"
+148-->[:geolocator_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:9:13-77
+149            android:enabled="true"
+149-->[:geolocator_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:10:13-35
+150            android:exported="false"
+150-->[:geolocator_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:11:13-37
+151            android:foregroundServiceType="location" />
+151-->[:geolocator_android] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/geolocator_android/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-53
+152        <service
+152-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:11:9-15:56
+153            android:name="com.lyokone.location.FlutterLocationService"
+153-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:12:13-71
+154            android:enabled="true"
+154-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:13:13-35
+155            android:exported="false"
+155-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:14:13-37
+156            android:foregroundServiceType="location" />
+156-->[:location] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/location/intermediates/merged_manifest/release/AndroidManifest.xml:15:13-53
+157
+158        <uses-library
+158-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:23:9-25:40
+159            android:name="androidx.window.extensions"
+159-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:24:13-54
+160            android:required="false" />
+160-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:25:13-37
+161        <uses-library
+161-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:26:9-28:40
+162            android:name="androidx.window.sidecar"
+162-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:27:13-51
+163            android:required="false" /> <!-- Needs to be explicitly declared on P+ -->
+163-->[androidx.window:window:1.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/281cded7fbdad60a09452b60aac31df8/transformed/jetified-window-1.2.0/AndroidManifest.xml:28:13-37
+164        <uses-library
+164-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:39:9-41:40
+165            android:name="org.apache.http.legacy"
+165-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:40:13-50
+166            android:required="false" />
+166-->[com.google.android.gms:play-services-maps:18.2.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/c03af8b7b29fd91f153253fdee757e12/transformed/jetified-play-services-maps-18.2.0/AndroidManifest.xml:41:13-37
+167
+168        <receiver
+168-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:29:9-40:20
+169            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+169-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:30:13-78
+170            android:exported="true"
+170-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:31:13-36
+171            android:permission="com.google.android.c2dm.permission.SEND" >
+171-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:32:13-73
+172            <intent-filter>
+172-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:30:13-32:29
+173                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+173-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:31:17-81
+173-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:31:25-78
+174            </intent-filter>
+175
+176            <meta-data
+176-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:37:13-39:40
+177                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+177-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:38:17-92
+178                android:value="true" />
+178-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:39:17-37
+179        </receiver>
+180        <!--
+181             FirebaseMessagingService performs security checks at runtime,
+182             but set to not exported to explicitly avoid allowing another app to call it.
+183        -->
+184        <service
+184-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:46:9-53:19
+185            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+185-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:47:13-82
+186            android:directBootAware="true"
+186-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:48:13-43
+187            android:exported="false" >
+187-->[com.google.firebase:firebase-messaging:24.0.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/4232725b7c18a282191433471f8c1a7b/transformed/jetified-firebase-messaging-24.0.1/AndroidManifest.xml:49:13-37
+188            <intent-filter android:priority="-500" >
+188-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:21:13-23:29
+189                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+189-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:22:17-78
+189-->[:firebase_messaging] /Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/firebase_messaging/intermediates/merged_manifest/release/AndroidManifest.xml:22:25-75
+190            </intent-filter>
+191        </service>
+192
+193        <activity
+193-->[com.google.android.gms:play-services-base:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/360af8451fbf437b47dbfc2daab74bd3/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:9-22:45
+194            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+194-->[com.google.android.gms:play-services-base:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/360af8451fbf437b47dbfc2daab74bd3/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:20:19-85
+195            android:exported="false"
+195-->[com.google.android.gms:play-services-base:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/360af8451fbf437b47dbfc2daab74bd3/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:22:19-43
+196            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+196-->[com.google.android.gms:play-services-base:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/360af8451fbf437b47dbfc2daab74bd3/transformed/jetified-play-services-base-18.3.0/AndroidManifest.xml:21:19-78
+197
+198        <provider
+198-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:23:9-28:39
+199            android:name="com.google.firebase.provider.FirebaseInitProvider"
+199-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:24:13-77
+200            android:authorities="com.example.location_verification.firebaseinitprovider"
+200-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:25:13-72
+201            android:directBootAware="true"
+201-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:26:13-43
+202            android:exported="false"
+202-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:27:13-37
+203            android:initOrder="100" />
+203-->[com.google.firebase:firebase-common:21.0.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/fb5212b50a9a6538c42b3d4a1ff89386/transformed/jetified-firebase-common-21.0.0/AndroidManifest.xml:28:13-36
+204        <provider
+204-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:24:9-32:20
+205            android:name="androidx.startup.InitializationProvider"
+205-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:25:13-67
+206            android:authorities="com.example.location_verification.androidx-startup"
+206-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:26:13-68
+207            android:exported="false" >
+207-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:27:13-37
+208            <meta-data
+208-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+209                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+209-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+210                android:value="androidx.startup" />
+210-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/46ddf1235ef111d2800cc25140d8f167/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+211            <meta-data
+211-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+212                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+212-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+213                android:value="androidx.startup" />
+213-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+214        </provider>
+215
+216        <meta-data
+216-->[com.google.android.gms:play-services-basement:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/0e7a12391abf139832b6f42995e87631/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:21:9-23:69
+217            android:name="com.google.android.gms.version"
+217-->[com.google.android.gms:play-services-basement:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/0e7a12391abf139832b6f42995e87631/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:22:13-58
+218            android:value="@integer/google_play_services_version" />
+218-->[com.google.android.gms:play-services-basement:18.3.0] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/0e7a12391abf139832b6f42995e87631/transformed/jetified-play-services-basement-18.3.0/AndroidManifest.xml:23:13-66
+219
+220        <receiver
+220-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+221            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+221-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+222            android:directBootAware="false"
+222-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+223            android:enabled="true"
+223-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+224            android:exported="true"
+224-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+225            android:permission="android.permission.DUMP" >
+225-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+226            <intent-filter>
+226-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+227                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+227-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+227-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+228            </intent-filter>
+229            <intent-filter>
+229-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+230                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+230-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+230-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+231            </intent-filter>
+232            <intent-filter>
+232-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+233                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+233-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+233-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+234            </intent-filter>
+235            <intent-filter>
+235-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+236                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+236-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+236-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/80d2f6eaf17f8579a413175fd6ea0d21/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+237            </intent-filter>
+238        </receiver>
+239
+240        <service
+240-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:28:9-34:19
+241            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+241-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:29:13-103
+242            android:exported="false" >
+242-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:30:13-37
+243            <meta-data
+243-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:31:13-33:39
+244                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+244-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:32:17-94
+245                android:value="cct" />
+245-->[com.google.android.datatransport:transport-backend-cct:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/e7ee84efa9ce276dadfe1b5a731e822b/transformed/jetified-transport-backend-cct-3.1.9/AndroidManifest.xml:33:17-36
+246        </service>
+247        <service
+247-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:26:9-30:19
+248            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+248-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:27:13-117
+249            android:exported="false"
+249-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:28:13-37
+250            android:permission="android.permission.BIND_JOB_SERVICE" >
+250-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:29:13-69
+251        </service>
+252
+253        <receiver
+253-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:32:9-34:40
+254            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+254-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:33:13-132
+255            android:exported="false" />
+255-->[com.google.android.datatransport:transport-runtime:3.1.9] /Users/alvinmathew/.gradle/caches/8.10.2/transforms/d43cf291cf97abbb562139ca8e16e06c/transformed/jetified-transport-runtime-3.1.9/AndroidManifest.xml:34:13-37
+256    </application>
+257
+258</manifest>

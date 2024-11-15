@@ -1,0 +1,4 @@
+#Thu Nov 14 21:58:52 CST 2024
+base.0=/Users/alvinmathew/Downloads/projects/locationverifywork/Location-Verification-App/build/app/intermediates/dex/release/minifyReleaseWithR8/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

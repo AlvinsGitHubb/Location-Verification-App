@@ -548,10 +548,10 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-10-23T21:06:57.413155Z",
+  "generated": "2024-10-24T00:20:58.639782Z",
   "generator": "pub",
   "generatorVersion": "3.5.3",
   "flutterRoot": "file:///Users/alvinmathew/flutter",
-  "flutterVersion": "3.24.3",
+  "flutterVersion": "3.24.4-0.0.pre.1",
   "pubCache": "file:///Users/alvinmathew/.pub-cache"
 }

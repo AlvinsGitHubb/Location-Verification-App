@@ -1,129 +1,3 @@
-// import 'dart:async';
-// import 'package:flutter/material.dart';
-// import 'package:google_maps_flutter/google_maps_flutter.dart';
-// import 'package:geolocator/geolocator.dart';
-// import 'package:permission_handler/permission_handler.dart';
-
-// void main() => runApp(LocationTrackingApp());
-
-// class LocationTrackingApp extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: LiveLocationScreen(),
-//     );
-//   }
-// }
-
-// class LiveLocationScreen extends StatefulWidget {
-//   @override
-//   _LiveLocationScreenState createState() => _LiveLocationScreenState();
-// }
-
-// class _LiveLocationScreenState extends State<LiveLocationScreen> {
-//   Completer<GoogleMapController> _controller = Completer();
-//   LatLng _currentPosition = LatLng(37.7749, -122.4194); // Default position (San Francisco)
-//   StreamSubscription<Position>? _positionStream;
-//   bool _isTracking = false;
-
-//   @override
-//   void initState() {
-//     super.initState();
-//     _checkPermissionAndStartTracking();
-//   }
-
-//   Future<void> _checkPermissionAndStartTracking() async {
-//     var status = await Permission.location.request();
-
-//     if (status.isGranted) {
-//       _startLocationTracking();
-//     } else {
-//       print("Location permission denied");
-//     }
-//   }
-
-// // void _startLocationTracking() async {
-// //   LocationSettings locationSettings = LocationSettings(
-// //     accuracy: LocationAccuracy.high,
-// //     distanceFilter: 4 // Minimum distance in meters to receive updates
-// //   );
-
-// //   // Listen to the location updates
-// //   _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
-// //       .listen((Position newPosition) {
-// //     print("Received new position: $newPosition"); // Debug line
-// //     if (newPosition != null) {
-// //       setState(() {
-// //         _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
-// //       });
-// //       _updateMapLocation(_currentPosition);
-// //     }
-// //   }, onError: (error) {
-// //     print("Error in location stream: $error"); // Log any errors
-// //   });
-// // }
-
-// void _startLocationTracking() async {
-//   LocationSettings locationSettings = LocationSettings(
-//     accuracy: LocationAccuracy.high,
-//     distanceFilter: 3,
-//   );
-
-//   _positionStream = Geolocator.getPositionStream(locationSettings: locationSettings)
-//       .listen((Position newPosition) {
-//     if (newPosition != null) {
-//       setState(() {
-//         _currentPosition = LatLng(newPosition.latitude, newPosition.longitude);
-//         _updateMapLocation(_currentPosition); // Ensure map is updated
-//       });
-//     }
-//   });
-// }
-
-
-
-// Future<void> _updateMapLocation(LatLng position) async {
-//   final GoogleMapController controller = await _controller.future;
-//   controller.animateCamera(CameraUpdate.newLatLng(position)); // Animate camera to new position
-// }
-
-
-
-//   @override
-//   void dispose() {
-//     _positionStream?.cancel();
-//     super.dispose();
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Live Location Tracking'),
-//       ),
-//       body: GoogleMap(
-//         initialCameraPosition: CameraPosition(
-//           target: _currentPosition,
-//           zoom: 15.0,
-//         ),
-//         onMapCreated: (GoogleMapController controller) {
-//           _controller.complete(controller);
-//         },
-//         myLocationEnabled: true,
-//         myLocationButtonEnabled: true,
-//         markers: {
-//           Marker(
-//             markerId: MarkerId('currentLocation'),
-//             position: _currentPosition,
-//             infoWindow: InfoWindow(title: 'You are here'),
-//           )
-//         },
-//       ),
-//     );
-//   }
-// }
-
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
@@ -166,6 +40,7 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
   bool _isSimulating = false;
   final _addressController = TextEditingController();
   final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+  LatLng? _lastCameraPosition;
 
   final String _googleApiKey = "AIzaSyD8SKqoDKMzVOfDL2G0AoYW6VDJX0BbBME"; // Replace with your API key
 
@@ -212,6 +87,7 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
    Position position = await Geolocator.getCurrentPosition(
     locationSettings: LocationSettings(
       accuracy: LocationAccuracy.high,
+      distanceFilter: 10,
       ),
     );
     setState(() {
@@ -220,27 +96,51 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
     _updateMapLocation(_currentPosition);
   }
 
-  /// Update the map camera to follow the current position
+  /// Update the map camera to follow the current position if the distance is significant
   Future<void> _updateMapLocation(LatLng position) async {
+    if (_lastCameraPosition != null) {
+      double distance = Geolocator.distanceBetween(
+        _lastCameraPosition!.latitude,
+        _lastCameraPosition!.longitude,
+        position.latitude,
+        position.longitude,
+      );
+
+      if (distance < 50) {
+        return; // Skip camera update if distance is less than 50 meters
+      }
+    }
+
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newLatLng(position));
+    _lastCameraPosition = position; // Update the last camera position
   }
 
-  /// Get route points from current location to destination
+  /// Get route points from current location to destination, adding every 5th point for optimization
   Future<void> _getRoutePoints(LatLng origin, LatLng destination) async {
-    String url =
-        "https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}&key=$_googleApiKey";
+  // Clear previous route points
+  _routePoints.clear();
 
-    final response = await http.get(Uri.parse(url));
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      final points = data['routes'][0]['overview_polyline']['points'];
-      _routePoints = _decodePolyline(points);
-      _startDrivingSimulation(); // Start simulation after fetching route
-    } else {
-      if (kDebugMode) print("Failed to get directions");
-    }
+  String url =
+      "https://maps.googleapis.com/maps/api/directions/json?origin=${origin.latitude},${origin.longitude}&destination=${destination.latitude},${destination.longitude}&key=$_googleApiKey";
+
+  final response = await http.get(Uri.parse(url));
+  if (response.statusCode == 200) {
+    final data = json.decode(response.body);
+    final points = data['routes'][0]['overview_polyline']['points'];
+    List<LatLng> decodedPoints = _decodePolyline(points);
+
+    // Add only every 5th point to _routePoints to reduce the density
+    _routePoints = [
+      for (int i = 0; i < decodedPoints.length; i += 5) decodedPoints[i]
+    ];
+
+    _startDrivingSimulation(); // Start simulation after fetching route
+  } else {
+    if (kDebugMode) print("Failed to get directions");
   }
+}
+
 
   /// Decode polyline points into LatLng list
   List<LatLng> _decodePolyline(String encoded) {
@@ -274,16 +174,43 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
     return polyline;
   }
 
+  void _showPopupNotification() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: const Text("Destination Reached"),
+          content: const Text("You have arrived at your destination."),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); // Close the dialog
+              },
+              child: const Text("OK"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   /// Simulate driving along the route
   void _startDrivingSimulation() {
-    _simulationTimer = Timer.periodic(Duration(seconds: 1), (timer) {
+    // Reset state variables
+    _simulationTimer?.cancel();
+    _routeIndex = 0;
+
+    // Start the simulation timer
+    _simulationTimer = Timer.periodic(Duration(seconds: 3), (timer) {
       if (_routeIndex < _routePoints.length) {
         setState(() {
           _currentPosition = _routePoints[_routeIndex];
           _updateMapLocation(_currentPosition);
           _routeIndex++;
+
           if (_routeIndex == _routePoints.length) {
-            _showArrivalNotification(); // Show arrival notification
+            _showArrivalNotification(); // Show system notification
+            _showPopupNotification(); // Show popup dialog
             _simulationTimer?.cancel();
             setState(() {
               _isSimulating = false; // End simulation
@@ -293,6 +220,8 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
       }
     });
   }
+
+
 
   /// Search for an address and set it as the destination
   Future<void> _searchAddress(String address) async {
@@ -319,6 +248,7 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
     }
   }
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -342,7 +272,7 @@ class _LiveLocationScreenState extends State<LiveLocationScreen> {
           GoogleMap(
             initialCameraPosition: CameraPosition(
               target: _currentPosition,
-              zoom: 14.0,
+              zoom: 10.0,
             ),
             myLocationEnabled: true, // Enable user location on the map
             myLocationButtonEnabled: true,
